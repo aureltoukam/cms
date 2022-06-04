@@ -32,7 +32,7 @@
 
         </div>
         <?php
-            $req = "SELECT * FROM Présentation";
+            $req = "SELECT * FROM presentation";
             $res1 = $conn->query($req);
             $tab=$res1->fetchAll();
             if ($tab) {
@@ -43,10 +43,10 @@
                     <h2>Story</h2>
                 </div>
                 <hr>
-                <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, excepturi quaerat. Autem dignissimos expedita magnam dolores soluta. Recusandae, aliquam! Explicabo cumque ipsa sint illum aliquam culpa beatae modi totam dicta.</div>
+                <div class="content"><?= $tab[0]['Story']?></div>
             </div>
-            <span class="status pending"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span>
-            <span class="status return"><a href=""><img src="../images/button_cancel.png"  width="30px" alt=""></a></span>
+            <span class="status pending"><a href="MD_story.php?id=<?php echo $tab[0]['id']; ?>"><img src="../images/interact.png"  width="30px" alt=""></a></span>
+            <span class="status return"><a href="Drop_story.php?id=<?php echo $tab[0]['id']; ?>"><img src="../images/button_cancel.png"  width="30px" alt=""></a></span>
         </div>
         <?php
              }
