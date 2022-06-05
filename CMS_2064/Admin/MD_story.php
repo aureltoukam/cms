@@ -1,3 +1,4 @@
+<script src="https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js"></script>
 <?php
     include 'includes/headlog.php';
     require "includes/header.php";
@@ -35,12 +36,17 @@
             <p>Name Mairie</p>
             <input type="text" name="name" id="" placeholder="Enter Name" value="<?php echo $publisher['nom_Mairie']; ?>">
             <p>Set Story</p>
-            <textarea name="story" rows="13" placeholder="the story"><?php echo $publisher['Story'];?></textarea><br><br>
+            <textarea name="story" id="editor" rows="13"  placeholder="the story"><?php echo $publisher['Story'];?></textarea><br><br>
             <input type="submit" value="Done" name="Done">
         </form>
-        </form>
 </div> 
-
+<script type="text/javascript">
+    ClassicEditor
+    .create( document.querySelector( '#edito' ) )
+    .catch( error => {
+        console.error( error );
+    } );    
+</script>
 
 <?php
             }

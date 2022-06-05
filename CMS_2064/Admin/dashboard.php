@@ -1,11 +1,10 @@
 <?php
-    require "includes/header.php";
     include 'includes/headlog.php';
+    include "includes/header.php";
+    if (isset($_SESSION['username'])) {
+    
 ?>
-
-        
-
-        <!-- ======================= Cards ================== -->
+      <!-- ======================= Cards ================== -->
         <div class="cardBox">
             <div class="card">
                 <div>
@@ -29,6 +28,8 @@
                     <ion-icon name="chatbubbles-outline"></ion-icon>
                 </div>
             </div>
+            <button class="view"><a href="../soft_thème/presentation.php" ><img src="../images/eye.png" width="100%" alt=""></a></button>
+            
 
         </div>
         <?php
@@ -76,7 +77,7 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Personnel</h2>
-                        <a href="Addpersonnel.php" class="btn">Add0ne</a>
+                        <a href="Add_personnel.php" class="btn">Add0ne</a>
                     </div>
                     <hr>
                     <table>
@@ -116,94 +117,39 @@
                 <div class="recentCustomers">
                     <div class="cardHeader">
                         <h2>Missions de la Mairie</h2>
-                        <a href="#" class="btn">Add0ne</a>
+                        <a href="Add_mission.php" class="btn">Add0ne</a>
                     </div>  
 
-                    <table>
+                        <table>
+                        <tbody>
+                        <?php
+                            $req = "SELECT * FROM Mission order by id desc";
+                            $res1 = $conn->query($req);
+                            if ($res1) {
+                                
+                                $all = $res1->fetchAll();
+                                foreach ($all as $publisher) {
+                                            
+                        ?>
                         <tr>
                             <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
+                                <div class="imgBx"><img src="../images/<?php echo $publisher['image']; ?>" alt=""></div>
                             </td>
                             <td>
-                                <h4>Titre</h4>
+                                <h4><?php echo $publisher['titre']; ?></h4>
                             </td>
                             <td>
-                                <span class="status inProgress"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span>
+                                <span class="status inProgress"><a href="MD_mission.php?id=<?php echo $publisher['id']; ?>"><img src="../images/interact.png"  width="30px" alt=""></a></span>
                             </td>
                             <td>
-                                 <span class="status return"><a href=""><img src="../images/button_cancel.png"  width="30px" alt=""></a></span>
+                                 <span class="status return"><a href="Drop_mission.php?id=<?php echo $publisher['id']; ?>"><img src="../images/button_cancel.png"  width="30px" alt=""></a></span>
                             </td>
                         </tr>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Titre</h4>
-                            </td>
-                            <td>
-                                <span class="status inProgress"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span>
-                            </td>
-                            <td>
-                                 <span class="status return"><a href=""><img src="../images/button_cancel.png"  width="30px" alt=""></a></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Titre</h4>
-                            </td>
-                            <td>
-                                <span class="status inProgress"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span>
-                            </td>
-                            <td>
-                                 <span class="status return"><a href=""><img src="../images/button_cancel.png"  width="30px" alt=""></a></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Titre</h4>
-                            </td>
-                            <td>
-                                <span class="status inProgress"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span>
-                            </td>
-                            <td>
-                                 <span class="status return"><a href=""><img src="../images/button_cancel.png"  width="30px" alt=""></a></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Titre</h4>
-                            </td>
-                            <td>
-                                <span class="status inProgress"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span>
-                            </td>
-                            <td>
-                                 <span class="status return"><a href=""><img src="../images/button_cancel.png"  width="30px" alt=""></a></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Titre</h4>
-                            </td>
-                            <td>
-                                <span class="status inProgress"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span>
-                            </td>
-                            <td>
-                                 <span class="status return"><a href=""><img src="../images/button_cancel.png"  width="30px" alt=""></a></span>
-                            </td>
-                        </tr>
+                        <?php
+                                }                            
+                            }
+                        ?>
+                        </tbody>
                     </table>
                 </div>
                 <div class="recentOrders">
@@ -243,54 +189,17 @@
                                     }                            
                                 }
                             ?>
-
-                            <tr>
-                                <td>Conseillé Name</td>
-                                <td>utilité</td>
-                                <td><span class="status pending"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span></td>
-                                <td><span class="status return"><a href=""><img src="../images/delete_user.png"  width="30px" alt=""></a></span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Conseillé Name</td>
-                                <td>utilité</td>
-                                <td><span class="status pending"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span></td>
-                                <td><span class="status return"><a href=""><img src="../images/delete_user.png"  width="30px" alt=""></a></span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Conseillé Name</td>
-                                <td>utilité</td>
-                                <td><span class="status pending"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span></td>
-                                <td><span class="status return"><a href=""><img src="../images/delete_user.png"  width="30px" alt=""></a></span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Conseillé Name</td>
-                                <td>utilité</td>
-                                <td><span class="status pending"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span></td>
-                                <td><span class="status return"><a href=""><img src="../images/delete_user.png"  width="30px" alt=""></a></span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Conseillé Name</td>
-                                <td>utilité</td>
-                                <td><span class="status pending"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span></td>
-                                <td><span class="status return"><a href=""><img src="../images/delete_user.png"  width="30px" alt=""></a></span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Conseillé Name</td>
-                                <td>utilité</td>
-                                <td><span class="status pending"><a href=""><img src="../images/interact.png"  width="30px" alt=""></a></span></td>
-                                <td><span class="status return"><a href=""><img src="../images/delete_user.png"  width="30px" alt=""></a></span></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-  
-  
+
 <?php
-    require "includes/footer.php";
+     }
+     else {
+         header('location:../index.php');
+     }
+?>
+<?php
+    include "includes/footer.php";
 ?>

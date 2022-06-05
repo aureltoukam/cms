@@ -35,16 +35,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
-                        <span class="icon">
-                            <span class="bi bi-person-circle"></span>
-                        </span>
-                        <span class="title">Peronnel</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
+                    <a href="activités.php">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -53,7 +44,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="annonces.php">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -63,7 +54,7 @@
                 
 
                 <li>
-                    <a href="#">
+                    <a href="Pubs.php">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -72,34 +63,33 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="Projets.php">
                         <span class="icon">
                             <ion-icon name="help-outline"></ion-icon>
                         </span>
-                        <span class="title">FAQ</span>
+                        <span class="title">Projets</span>
                     </a>
                 </li>
 
+                <li>
+                    <a href="Tourisme.php">
+                        <span class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                        <span class="title">Site touristiques</span>
+                    </a>
+                </li>
                 <li>
                     <a href="#">
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
-                        <span class="title">Settings</span>
+                        <span class="title">thèmes</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <span class="title">Password</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
+                    <a href="logout.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>

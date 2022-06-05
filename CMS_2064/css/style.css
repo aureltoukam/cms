@@ -533,8 +533,8 @@ hr{
   left: 50%;
   transform:translate(-50%,-50%);
   width: 350px;
-  height: 550px;
-  padding: 80px 40px  ;
+  height: 570px;
+  padding: 20px 40px  ;
   box-sizing: border-box;
   background: rgba(0, 0, 0, .5);
 }
@@ -559,6 +559,8 @@ hr{
 }
 
 .loginBox input[type="text"],
+.loginBox input[type="date"],
+#email,
 .loginBox textarea,
 .loginBox input[type="password"],
 .registerBox input[type="text"],
@@ -592,4 +594,16 @@ hr{
 .registerBox input[type="submit"]:hover{
   background: #111b47d8;
   color: aqua;
+}
+
+.view{
+  position: fixed;
+  border: none;
+  outline: none;
+  height: 50px;
+  width: 50px;
+  bottom: 5px;
+  right: 5px;
+  border-radius:50%;
+  z-index: 1000;
 }

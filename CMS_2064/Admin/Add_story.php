@@ -7,7 +7,7 @@
         <h2>Mairie add Site story</h2>
         <form action="./Add_story.php" method="post">
             <p>Name Mairie</p>
-            <input type="text" name="firstname" id="" placeholder="Enter Name">
+            <input type="text" name="nom" id="" placeholder="Enter Name">
             <p>Set Story</p>
             <textarea name="story" rows="13" placeholder="the story"></textarea><br><br>
             <input type="submit" value="Done" name="Done">
@@ -24,7 +24,7 @@
         if (isset($res)) {
             header("Location:dashboard.php");
         }else {
-            header("Location:Add_dtory.php");
+            header("Location:Add_story.php");
         }
     }
     

@@ -6,15 +6,16 @@
         $name = $_POST['name'];
         $password = $_POST['password'];
         $password = password_hash($password,PASSWORD_BCRYPT);
-        $profile = $_FILES['profile'];
         $Email = $_POST['Email'];
-        $ext = explode('.',$_FILES['profile']['name']);
-        $ext = end($ext);
-        echo $ext;
-        $path = '../images/';
-        echo $path.$_FILES['profile']['name'],$_FILES['profile']['tmp_name'];
-        move_uploaded_file($_FILES['profile']['tmp_name'], $path.$_FILES['profile']['name']);
-        /* $req = "SELECT * FROM User WHERE username='$Username' or password='$password'";
+        $file = $_FILES['profile'];
+        $profile = $_FILES['profile']['name'];
+        $tmp_dir = $_FILES['profile']['tmp_name'];
+        $img_type=$_FILES['profile']['type'];
+        if ($img_type==="image/png"||$img_type==="image/png") {
+            # code...
+        }
+        move_uploaded_file($tmp_dir, __DIR__."/../images/".$profile);
+        $req = "SELECT * FROM User WHERE username='$Username' or password='$password'";
         $res1 = $conn->prepare($req);
         $res1->execute();
         $all = $res1->fetchAll();
@@ -22,18 +23,18 @@
             header("Location:register.php");
             $_SESSION['message'] = "l'utilisateur existe déja ";
         }else {
-            $sql = "INSERT INTO User(username, nom,email,password) VALUES ('$Username', '$name', '$Email', '$password')";
+            $sql = "INSERT INTO User(username, nom,email,password,profil_pic) VALUES ('$Username', '$name', '$Email', '$password','$profile')";
             // use exec() because no results are returned
             $res = $conn->exec($sql);
-            if (isset($res)) {
-                header("Location:login.php");
+            if ($res) {
+                header("Location:../index.php");
                 $_SESSION['message'] = "<p style= 'color:green;'>succesful</p>";
             }
             else {
                 header("Location:register.php");
                 $_SESSION['message'] = "<p style='color:red;'>error</p>";
             }
-        } */
+        } 
     }
 
 ?>
@@ -60,7 +61,7 @@
             <p>Password</p>
             <input type="password" name="password" id="" placeholder="Enter Password">
             <p>profil</p>
-            <input type="file" name="profile" id="" >
+            <input type="file" name="profile" id="profile" >
             <input type="submit" value="Inscript In" name="inscript">
         </form>
         <?php
